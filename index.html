@@ -2,73 +2,87 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>请使用浏览器打开</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open in Browser Required</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
+            background: #f8f9fa;
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            text-align: center;
         }
         .container {
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 30px;
             max-width: 500px;
-            width: 100%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
+            width: 90%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .url-box {
-            border: 1px solid #ddd;
-            padding: 12px;
-            margin: 20px 0;
-            border-radius: 5px;
-            background: #f9f9f9;
+            border: 2px dashed #0066ff;
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 8px;
+            background: #f0f7ff;
+            font-size: 16px;
             word-break: break-all;
+            user-select: all;
         }
-        .btn {
-            display: inline-block;
+        .btn-copy {
             background: #0066ff;
             color: white;
+            border: none;
             padding: 12px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
             margin-top: 10px;
+        }
+        .warning {
+            color: #ff4444;
+            font-weight: bold;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>请使用浏览器打开</h2>
-        <p>检测到您正在TikTok应用内访问，为了完整体验功能，请:</p>
-        <ol style="text-align: left; margin-left: 20px;">
-            <li>点击右上角 <strong>•••</strong> 按钮</li>
-            <li>选择 <strong>"在浏览器中打开"</strong></li>
-        </ol>
+        <h2>⚠️ Manual Copy Required</h2>
+        <p class="warning">This content cannot be opened in the current app!</p>
         
-        <p>或者复制以下链接到浏览器:</p>
-        <div class="url-box" id="url-display">https://ingf.cc/XgqwT</div>
+        <p>Please <strong>long-press to copy</strong> the link below and paste it into <strong>Safari/Chrome/Edge</strong>:</p>
         
-        <a href="https://ingf.cc/XgqwT" class="btn" id="direct-link">继续访问</a>
+        <div class="url-box" id="target-url">https://ingf.cc/XgqwT</div>
+        
+        <button class="btn-copy" onclick="copyToClipboard()">Click to Copy Link</button>
         
         <script>
-            // 尝试阻断TikTok的直接跳转
-            try {
-                if (window.location.href.includes('tiktok') || 
-                    navigator.userAgent.toLowerCase().includes('tiktok')) {
-                    document.getElementById('direct-link').onclick = function(e) {
-                        e.preventDefault();
-                        alert('请使用浏览器打开以获得完整体验');
-                    };
+            // Block all direct linking attempts
+            document.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A' || e.target.closest('a')) {
+                    e.preventDefault();
                 }
-            } catch (e) {}
+            }, true);
+
+            // Copy function
+            function copyToClipboard() {
+                const url = document.getElementById('target-url');
+                navigator.clipboard.writeText(url.innerText).then(() => {
+                    alert('Link copied! Please paste it into your browser.');
+                }).catch(() => {
+                    const range = document.createRange();
+                    range.selectNode(url);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                    document.execCommand('copy');
+                    alert('Link selected - manually copy (Ctrl+C) now.');
+                });
+            }
         </script>
     </div>
 </body>
