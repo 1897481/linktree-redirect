@@ -2,38 +2,74 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>请在浏览器中打开</title>
-    <script>
-        // 增强版检测（覆盖 TikTok、Instagram 等）
-        function isInAppBrowser() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isTikTok = userAgent.includes('tiktok') || window.__tiktok !== undefined;
-            const isSocialApp = /instagram|facebook|twitter|snapchat|pinterest|line|whatsapp/.test(userAgent);
-            return isTikTok || isSocialApp;
+    <title>请使用浏览器打开</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-
-        // 目标链接（你的 ingf.cc/XgqwT）
-        const targetUrl = "https://ingf.cc/XgqwT";
-
-        // 如果是内置浏览器，显示提示；否则直接跳转
-        if (isInAppBrowser()) {
-            document.body.innerHTML = `
-                <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; text-align: center;">
-                    <h2>请使用系统浏览器打开</h2>
-                    <p>当前页面在 TikTok 内无法完整显示。</p>
-                    <p>请点击右上角「•••」→ "在浏览器中打开"</p>
-                    <input type="text" value="${targetUrl}" style="width: 100%; padding: 10px; margin: 15px 0; border: 1px solid #ccc;" readonly>
-                    <p><a href="${targetUrl}" style="color: #0066cc; text-decoration: underline;">直接跳转（可能仍受限）</a></p>
-                </div>
-            `;
-        } else {
-            window.location.href = targetUrl;
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
         }
-    </script>
+        .url-box {
+            border: 1px solid #ddd;
+            padding: 12px;
+            margin: 20px 0;
+            border-radius: 5px;
+            background: #f9f9f9;
+            word-break: break-all;
+        }
+        .btn {
+            display: inline-block;
+            background: #0066ff;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <noscript>
-        <p>请启用 JavaScript 以正常跳转。</p>
-    </noscript>
+    <div class="container">
+        <h2>请使用浏览器打开</h2>
+        <p>检测到您正在TikTok应用内访问，为了完整体验功能，请:</p>
+        <ol style="text-align: left; margin-left: 20px;">
+            <li>点击右上角 <strong>•••</strong> 按钮</li>
+            <li>选择 <strong>"在浏览器中打开"</strong></li>
+        </ol>
+        
+        <p>或者复制以下链接到浏览器:</p>
+        <div class="url-box" id="url-display">https://ingf.cc/XgqwT</div>
+        
+        <a href="https://ingf.cc/XgqwT" class="btn" id="direct-link">继续访问</a>
+        
+        <script>
+            // 尝试阻断TikTok的直接跳转
+            try {
+                if (window.location.href.includes('tiktok') || 
+                    navigator.userAgent.toLowerCase().includes('tiktok')) {
+                    document.getElementById('direct-link').onclick = function(e) {
+                        e.preventDefault();
+                        alert('请使用浏览器打开以获得完整体验');
+                    };
+                }
+            } catch (e) {}
+        </script>
+    </div>
 </body>
 </html>
