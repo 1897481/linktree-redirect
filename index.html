@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>请在浏览器中打开</title>
+    <script>
+        // 增强版检测（覆盖 TikTok、Instagram 等）
+        function isInAppBrowser() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isTikTok = userAgent.includes('tiktok') || window.__tiktok !== undefined;
+            const isSocialApp = /instagram|facebook|twitter|snapchat|pinterest|line|whatsapp/.test(userAgent);
+            return isTikTok || isSocialApp;
+        }
+
+        // 目标链接（你的 ingf.cc/XgqwT）
+        const targetUrl = "https://ingf.cc/XgqwT";
+
+        // 如果是内置浏览器，显示提示；否则直接跳转
+        if (isInAppBrowser()) {
+            document.body.innerHTML = `
+                <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; text-align: center;">
+                    <h2>请使用系统浏览器打开</h2>
+                    <p>当前页面在 TikTok 内无法完整显示。</p>
+                    <p>请点击右上角「•••」→ "在浏览器中打开"</p>
+                    <input type="text" value="${targetUrl}" style="width: 100%; padding: 10px; margin: 15px 0; border: 1px solid #ccc;" readonly>
+                    <p><a href="${targetUrl}" style="color: #0066cc; text-decoration: underline;">直接跳转（可能仍受限）</a></p>
+                </div>
+            `;
+        } else {
+            window.location.href = targetUrl;
+        }
+    </script>
+</head>
+<body>
+    <noscript>
+        <p>请启用 JavaScript 以正常跳转。</p>
+    </noscript>
+</body>
+</html>
