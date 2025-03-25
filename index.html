@@ -2,13 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Open in Browser Required</title>
+    <title>OPEN IN BROWSER REQUIRED</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f8f9fa;
+            background: #f0f2f5;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,70 +18,108 @@
         }
         .container {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
-            max-width: 500px;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 600px;
             width: 90%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        h2 {
+            font-size: 28px;
+            color: #d32f2f;
+            margin-bottom: 25px;
+        }
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin: 20px 0;
         }
         .url-box {
-            border: 2px dashed #0066ff;
-            padding: 15px;
-            margin: 25px 0;
-            border-radius: 8px;
-            background: #f0f7ff;
-            font-size: 16px;
+            border: 3px dashed #1976d2;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 12px;
+            background: #e3f2fd;
+            font-size: 22px;
             word-break: break-all;
             user-select: all;
         }
         .btn-copy {
-            background: #0066ff;
+            background: #1976d2;
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .warning {
-            color: #ff4444;
+            padding: 18px 36px;
+            border-radius: 12px;
+            font-size: 20px;
             font-weight: bold;
+            cursor: pointer;
             margin: 20px 0;
+            transition: all 0.3s;
+        }
+        .btn-copy:hover {
+            background: #1565c0;
+            transform: scale(1.02);
+        }
+        .warning-icon {
+            font-size: 50px;
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+        .steps {
+            text-align: left;
+            font-size: 18px;
+            margin: 25px 0;
+            padding-left: 20px;
+        }
+        .steps li {
+            margin-bottom: 15px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>⚠️ Manual Copy Required</h2>
-        <p class="warning">This content cannot be opened in the current app!</p>
+        <div class="warning-icon">⚠️</div>
+        <h2>MANUAL BROWSER OPENING REQUIRED</h2>
         
-        <p>Please <strong>long-press to copy</strong> the link below and paste it into <strong>Safari/Chrome/Edge</strong>:</p>
+        <p><strong>This link cannot be opened directly in social media apps!</strong></p>
+        
+        <div class="steps">
+            <ol>
+                <li>Copy the link below</li>
+                <li>Open <strong>Safari/Chrome/Edge</strong></li>
+                <li>Paste the link into your browser's address bar</li>
+            </ol>
+        </div>
         
         <div class="url-box" id="target-url">https://ingf.cc/XgqwT</div>
         
-        <button class="btn-copy" onclick="copyToClipboard()">Click to Copy Link</button>
+        <button class="btn-copy" onclick="copyToClipboard()">COPY LINK TO CLIPBOARD</button>
         
+        <p style="font-size: 18px; color: #666;">
+            After copying, switch to your browser and paste the link
+        </p>
+
         <script>
             // Block all direct linking attempts
             document.addEventListener('click', function(e) {
                 if (e.target.tagName === 'A' || e.target.closest('a')) {
                     e.preventDefault();
+                    alert("Please COPY and OPEN in browser manually!");
                 }
             }, true);
 
-            // Copy function
+            // Enhanced copy function
             function copyToClipboard() {
                 const url = document.getElementById('target-url');
                 navigator.clipboard.writeText(url.innerText).then(() => {
-                    alert('Link copied! Please paste it into your browser.');
+                    alert('✔️ Link copied! Now open your browser and paste it.');
                 }).catch(() => {
                     const range = document.createRange();
                     range.selectNode(url);
                     window.getSelection().removeAllRanges();
                     window.getSelection().addRange(range);
                     document.execCommand('copy');
-                    alert('Link selected - manually copy (Ctrl+C) now.');
+                    alert('Link selected - press Ctrl+C (or long-press) to copy');
                 });
             }
         </script>
