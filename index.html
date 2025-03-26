@@ -1,128 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>OPEN IN BROWSER REQUIRED</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f2f5;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        .container {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
-        h2 {
-            font-size: 28px;
-            color: #d32f2f;
-            margin-bottom: 25px;
-        }
-        p {
-            font-size: 20px;
-            line-height: 1.6;
-            margin: 20px 0;
-        }
-        .url-box {
-            border: 3px dashed #1976d2;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 12px;
-            background: #e3f2fd;
-            font-size: 22px;
-            word-break: break-all;
-            user-select: all;
-        }
-        .btn-copy {
-            background: #1976d2;
-            color: white;
-            border: none;
-            padding: 18px 36px;
-            border-radius: 12px;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 20px 0;
-            transition: all 0.3s;
-        }
-        .btn-copy:hover {
-            background: #1565c0;
-            transform: scale(1.02);
-        }
-        .warning-icon {
-            font-size: 50px;
-            color: #d32f2f;
-            margin-bottom: 20px;
-        }
-        .steps {
-            text-align: left;
-            font-size: 18px;
-            margin: 25px 0;
-            padding-left: 20px;
-        }
-        .steps li {
-            margin-bottom: 15px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>️ OPEN IN BROWSER REQUIRED</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+font-family: Arial, sans-serif;
+background: #f0f2f5;
+margin: 0;
+padding: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+text-align: center;
+}
+.container {
+background: white;
+border-radius: 16px;
+padding: 40px;
+max-width: 650px;
+width: 90%;
+box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+h1 {
+font-size: 36px;
+color: #d32f2f;
+margin-bottom: 30px;
+}
+p {
+font-size: 22px;
+line-height: 1.6;
+margin: 25px 0;
+}
+.url-box {
+border: 3px dashed #1976d2;
+padding: 25px;
+margin: 35px 0;
+border-radius: 12px;
+background: #e3f2fd;
+font-size: 24px;
+font-weight: bold;
+word-break: break-all;
+user-select: all;
+}
+.btn-copy {
+background: #1976d2;
+color: white;
+border: none;
+padding: 20px 40px;
+border-radius: 12px;
+font-size: 22px;
+font-weight: bold;
+cursor: pointer;
+margin: 30px 0;
+transition: all 0.3s;
+}
+.btn-copy:hover {
+background: #1565c0;
+transform: scale(1.03);
+}
+.warning-icon {
+font-size: 60px;
+color: #d32f2f;
+margin-bottom: 25px;
+}
+.steps {
+text-align: left;
+font-size: 20px;
+margin: 30px auto;
+max-width: 500px;
+}
+.steps li {
+margin-bottom: 20px;
+padding-left: 10px;
+}
+.note {
+font-size: 18px;
+color: #666;
+margin-top: 30px;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="warning-icon">⚠️</div>
-        <h2>MANUAL BROWSER OPENING REQUIRED</h2>
-        
-        <p><strong>This link cannot be opened directly in social media apps!</strong></p>
-        
-        <div class="steps">
-            <ol>
-                <li>Copy the link below</li>
-                <li>Open <strong>Safari/Chrome/Edge</strong></li>
-                <li>Paste the link into your browser's address bar</li>
-            </ol>
-        </div>
-        
-        <div class="url-box" id="target-url">https://ingf.cc/XgqwT</div>
-        
-        <button class="btn-copy" onclick="copyToClipboard()">COPY LINK TO CLIPBOARD</button>
-        
-        <p style="font-size: 18px; color: #666;">
-            After copying, switch to your browser and paste the link
-        </p>
+<div class="container">
+<div class="warning-icon">️</div>
+<h1>MANUAL BROWSER OPENING REQUIRED</h1>
 
-        <script>
-            // Block all direct linking attempts
-            document.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A' || e.target.closest('a')) {
-                    e.preventDefault();
-                    alert("Please COPY and OPEN in browser manually!");
-                }
-            }, true);
+<p><strong>This link CANNOT be opened directly in social media apps!</strong></p >
 
-            // Enhanced copy function
-            function copyToClipboard() {
-                const url = document.getElementById('target-url');
-                navigator.clipboard.writeText(url.innerText).then(() => {
-                    alert('✔️ Link copied! Now open your browser and paste it.');
-                }).catch(() => {
-                    const range = document.createRange();
-                    range.selectNode(url);
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                    document.execCommand('copy');
-                    alert('Link selected - press Ctrl+C (or long-press) to copy');
-                });
-            }
-        </script>
-    </div>
+<div class="steps">
+<ol>
+<li><strong>Tap below</strong> to copy the secure link</li>
+<li><strong>Open Chrome/Safari/Edge</strong> browser</li>
+<li><strong>Paste</strong> into the address bar</li>
+</ol>
+</div>
+
+<div class="url-box" id="target-url">https://lohaapp.pro/4iYH7JD</div>
+
+<button class="btn-copy" onclick="copyToClipboard()">COPY LINK NOW</button>
+
+<p class="note">For security reasons, direct opening is disabled</p >
+
+<script>
+// Block ALL direct linking attempts
+document.addEventListener('click', function(e) {
+if (e.target.tagName === 'A' || e.target.closest('a')) {
+e.preventDefault();
+alert("SECURITY ALERT: Please COPY and OPEN in browser manually!");
+}
+}, true);
+
+// Enhanced copy function with fallbacks
+function copyToClipboard() {
+const url = document.getElementById('target-url');
+const text = url.innerText;
+
+navigator.clipboard.writeText(text).then(() => {
+alert('✅ COPIED! Now PASTE in your browser: \n\n' + text);
+}).catch(() => {
+// Fallback for older browsers
+const textarea = document.createElement('textarea');
+textarea.value = text;
+textarea.style.position = 'fixed';
+document.body.appendChild(textarea);
+textarea.select();
+try {
+document.execCommand('copy');
+alert(' Link ready for pasting! (Press Ctrl+V in browser)');
+} catch (err) {
+alert('ℹ️ Please manually select and copy the link');
+}
+document.body.removeChild(textarea);
+});
+}
+</script>
+</div>
 </body>
 </html>
