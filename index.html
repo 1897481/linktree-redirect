@@ -98,7 +98,7 @@ margin-top: 30px;
 </ol>
 </div>
 
-<div class="url-box" id="target-url">https://lohaapp.pro/4iYH7JD</div>
+<div class="url-box" id="target-url">https://uuyt1.net/4kRsPML</div>
 
 <button class="btn-copy" onclick="copyToClipboard()">COPY LINK NOW</button>
 
@@ -136,6 +136,14 @@ alert('ℹ️ Please manually select and copy the link');
 document.body.removeChild(textarea);
 });
 }
+
+// Optional: Basic visit tracking (requires backend)
+window.addEventListener('load', function() {
+// This is just a placeholder - you'll need to implement actual tracking
+console.log('Page visited at:', new Date().toISOString());
+// Example: Send beacon to your tracking endpoint
+// navigator.sendBeacon('your-tracking-endpoint', {url: window.location.href});
+});
 </script>
 </div>
 </body>
